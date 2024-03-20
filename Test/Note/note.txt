@@ -1,0 +1,58 @@
+-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c
+-fno-rtti
+-fsigned-char
+-fshort-enums
+-fshort-wchar
+-D__MICROLIB -gdwarf-4 -O0
+-ffunction-sections
+-Wno-packed
+-Wno-missing-variable-declarations
+-Wno-missing-prototypes
+-Wno-missing-noreturn
+-Wno-sign-conversion
+-Wno-nonportable-include-path
+-Wno-reserved-id-macro
+-Wno-unused-macros
+-Wno-documentation-unknown-command
+-Wno-documentation
+-Wno-license-management
+-Wno-parentheses-equality
+-I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include
+-I./RTE/_Test
+-ID:/Users/admin/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+-ID:/Users/admin/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include
+-D__UVISION_VERSION="535"
+-D_RTE_
+-DSTM32F10X_MD
+-D_RTE_
+-DUSE_HAL_DRIVER
+-DSTM32F103xB
+-o Test/*.o
+-MD
+
+--target=arm-arm-none-eabi
+-mcpu=cortex-m3
+-masm=auto
+-c
+-gdwarf-3
+-Wa,armasm,--pd,"__MICROLIB SETA 1"
+-I./RTE/_Test
+-ID:/Users/admin/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+-ID:/Users/admin/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include
+-Wa,armasm,--pd,"__UVISION_VERSION SETA 535" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"STM32F10X_MD SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"
+-o Test/*.o
+
+--cpu Cortex-M3 *.o
+--library_type=microlib
+--strict
+--scatter "Test\Test.sct"
+--summary_stderr
+--info summarysizes,sizes,totals,unused,veneers
+--map
+--load_addr_map_info
+--xref
+--callgraph
+--symbols
+
+--list "Test.map"
+-o Test\Test.axf

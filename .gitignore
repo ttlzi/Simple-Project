@@ -1,0 +1,4 @@
+/Test/cmake-build-armclang-debug
+/Test/cmake-build-debug
+*.o
+*.d
