@@ -137,17 +137,18 @@ set(MAP_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.elf.map)
 
 #17.生成最终的HEX文件
 #使用 armclang 自带的 fromelf 工具，实现 elf 转 hex
-set(ARMCLANG_FROMELF fromelf.exe)
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        # 相当于fromelf.exe" --i32combined --output="xxx/demo.hex" "xxx/demo.elf"
-        COMMAND ${ARMCLANG_FROMELF} --i32combined --output="${HEX_FILE}" "${ELF_FILE}"
-        COMMENT "Building ${HEX_FILE}"
-)
-
+#set(ARMCLANG_FROMELF fromelf.exe)
 #add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-#        COMMAND ${ARMCLANG_FROMELF} --output ${HEX_FILE} --i32 $<TARGET_FILE:${PROJECT_NAME}>
-#        COMMAND ${ARMCLANG_FROMELF} --output ${BIN_FILE} --bin $<TARGET_FILE:${PROJECT_NAME}>
-#        COMMENT "Building ${HEX_FILE}\r\nBuilding ${BIN_FILE}")
+#        # 相当于fromelf.exe" --i32combined --output="xxx/demo.hex" "xxx/demo.elf"
+#        COMMAND ${ARMCLANG_FROMELF} --i32combined --output="${HEX_FILE}" "${ELF_FILE}"
+#        COMMENT "Building ${HEX_FILE}"
+#)
+
+#用这个比较稳定一些
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${ARMCLANG_FROMELF} --output ${HEX_FILE} --i32 $<TARGET_FILE:${PROJECT_NAME}>
+        COMMAND ${ARMCLANG_FROMELF} --output ${BIN_FILE} --bin $<TARGET_FILE:${PROJECT_NAME}>
+        COMMENT "Building ${HEX_FILE}\r\nBuilding ${BIN_FILE}")
 
 ## 使用了 gcc 的 arm-none-eabi-objcopy 工具实现 elf 转 hex 和 bin， 跟 armclang 不是一脉
 #set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
