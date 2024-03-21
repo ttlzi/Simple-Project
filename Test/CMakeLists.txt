@@ -73,6 +73,10 @@ include_directories(
         Drivers/STM32F1xx_HAL_Driver/Inc/Legacy
         Drivers/STM32F1xx_HAL_Driver/Inc
         Inc
+
+        Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2
+        Middlewares/Third_Party/FreeRTOS/Source/include
+        Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3
 )
 
 #9.设置源文件路径
@@ -80,6 +84,13 @@ file(GLOB_RECURSE SOURCES
         Drivers/STM32F1xx_HAL_Driver/Src/*.c
         MDK-ARM/*.s
         Src/*.c
+
+        Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/*.c
+        Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/*.c
+        Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/*.c
+        Middlewares/Third_Party/FreeRTOS/Source/*.c
+
+        User/App/*.c
 )
 
 #10.将由 CubeMX 生成的 GCC 编译环境中的会干扰ARMCC环境的文件，放在 EXCLUDE_SRCS 自定义列表中

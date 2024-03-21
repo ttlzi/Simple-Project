@@ -1,5 +1,5 @@
 #1.设置ARMClang工具链路径
-set(ARMCLANG_TOOLCHAIN_PATH "C:/Keil_v5/ARM/ARMCLANG/bin")
+set(ARMCLANG_TOOLCHAIN_PATH "C:/Keil/ARM/ARMCLANG/bin")
 #2.从ARMClang工具链路径中找到该工具
 find_program(ARMCLANG_COMPILER armclang PATHS ${ARMCLANG_TOOLCHAIN_PATH})
 #3.设置C、C++、ASM编译器

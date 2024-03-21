@@ -31,7 +31,22 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
 
+#include "cmsis_os.h"
+#include "gpio.h"
+
+#include "FreeRTOSConfig.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "timers.h"
+#include "semphr.h"
+#include "stream_buffer.h"
+#include "event_groups.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
